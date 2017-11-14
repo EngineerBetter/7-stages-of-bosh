@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>The Seven Stages of Bosh</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Christopher Gordon Hedley">
+		<meta name="author" content="Daniel Jones">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-63036894-1', 'auto');
+		  ga('send', 'pageview');
+
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-background="images/cfsummit_splash.png">
+				</section>
+				<section data-background="images/cfsummit_title.png">
+					<p>&nbsp;</p>
+				</section>
+				<section>
+					<h2>The Seven Stages of Bosh</h2>
+					<p>Surviving successful Bosh adoption</p>
+					<aside class="notes">
+						<ul>
+							<li>For people thinking of adopting Bosh</li>
+							<li>Support group for experienced Bosh users</li>
+							<li>Show of hands for Bosh usage/knowledge</li>
+						</ul>
+					</aside>
+				</section>
+				<section>
+					<p>Chris Hedley of CloudCredo</p>
+					<p>Daniel Jones of EngineerBetter</p>
+					<aside class="notes">
+						<ul>
+							<li>"...and I am a Bosh user"</li>
+							<li>We started as Spring app developers</li>
+							<li>Seen around 40 people go on the Bosh journey</li>
+							<li>Want to help prepare people for that journey, validate existing</li>
+						</ul>
+					</aside>
+				</section>
+				<section data-background="images/shock.gif">
+					<h2>Stage 0: Disbelief & Shock</h2>
+					<blockquote>&ldquo;the survivor refuses to accept that something is true or real&rdquo;</blockquote>
+					<aside class="notes">
+						<ul>
+							<li>We are all engineers here, so zero-indexing made sense</li>
+							<li>You've sat down for your interview task...</li>
+							<li>It really does all these things?</li>
+						</ul>
+					</aside>
+				</section>
+				<section>
+					<h2>What Bosh does for you</h2>
+					<ol>
+						<li>Create all the VMs</li>
+						<li>Auto-healing</li>
+						<li>Rolling upgrades</li>
+					</ol>
+					<aside class="notes">
+						<ul>
+							<li>Bosh does magic things compared to trad ops</li>
+							<li>Enterprise team would have taken a year of weekend releases</li>
+							<li>Disbelief, but all good so far - where is the shock?</li>
+						</ul>
+					</aside>
+				</section>
+				<section>
+					<img class="plain stretch" src="images/learning_cliff.png" />
+					<aside class="notes">
+						<ul>
+							<li>Image nabbed from MMORPGs</li>
+							<li>Shock comes from how many things you need to learn</li>
+						</ul>
+					</aside>
+				</section>
+				<section>
+					<img class="stretch plain" src="images/tech.svg" />
+					<aside class="notes">
+						<ul>
+							<li>Bosh layout</li>
+							<li>Bash for ctl scripts, packaging</li>
+							<li>Monit: uncommon</li>
+							<li>YAML: manifests, whitespace!</li>
+							<li>Ruby: CLI debugging</li>
+							<li>Golang: agent</li>
+							<li>Adds up to a lot</li>
+							<li>All this before the thing you want to deploy</li>
+						</ul>
+					</aside>
+				</section>
+				<section>
+					<h2>Learning Points</h2>
+					<ol>
+						<li>Bosh is very powerful and does amazing things</li>
+						<li>Your team <em>needs</em> to learn a lot</li>
+					</ol>
+				</section>
+
+				<section data-background="images/denial.gif">
+					<h2>Stage 1: Denial</h2>
+					<blockquote>&ldquo;the survivor imagines a false, preferable reality&rdquo;</blockquote>
+					<aside class="notes">
+						<ol>
+							<li>"Fine - I'll work with it, but it can't be any good, otherwise I'd have heard of it"</li>
+						</ol>
+						<em>You will need that Chrome plugin enabled for the next slide...</em>
+					</aside>
+				</section>
+				<section data-background-iframe="https://terraform.io">
+					<p>&nbsp;</p>
+					<aside class="notes">
+						<ol>
+							<li>Many may be aware of trendy new tools like Terraform, with a slick website...</li>
+						</ol>
+					</aside>
+				</section>
+				<section data-background="#FFFFFF" data-transition="zoom">
+					<img src="images/bosh-clam.png" width="100%" style="background:none; border:none; box-shadow:none;" />
+					<aside class="notes">
+						<ol>
+							<li>...depending on when they looked, if they search for Bosh, they'll find this</li>
+							<li>I can't use package managers, or Chef recipes</li>
+							<li>Releases &amp; manifests is faff</li>
+							<li>Is all this work really the best idea?</li>
+						</ol>
+					</aside>
+				</section>
+				<section>
+					<h2>Learning Points</h2>
+					<p>Remember that Bosh gives you:</p>
+					<ol>
+						<li>Declaration of intent</li>
+						<li>Effectively immutable</li>
+						<li>IaaS agnostic</li>
+						<li>Highly automated</li>
+						<li>Self-healing</li>
+						<li>Open source</li>
+					</ol>
+					<aside class="notes">
+						<ol>
+							<li>There isn't an easy answer - just remember what it does for you</li>
+						</ol>
+					</aside>
+				</section>
+
+
+				<section data-background="images/anger.gif">
+					<h2>Stage 2: Anger</h2>
+					<blockquote>&ldquo;the survivor becomes frustrated&rdquo;</blockquote>
+					<aside class="notes">
+						<ol>
+							<li>The developer's getting stuck, in trying their first deployment</li>
+							<li>Raise hands if you've worked with Bosh and not sworn at it</li>
+						</ol>
+					</aside>
+				</section>
+				<section data-background="images/yoda.jpg">
+					<blockquote>
+						&ldquo;
+							Confusion leads to anger.<br />
+							Anger leads to hate.<br />
+							Hate leads to <strong>production downtime</strong>.
+						&rdquo;
+					</blockquote>
+					<p><em>Yoda - The Phantom Manifest</em></p>
+					<aside class="notes">
+						<ol>
+							<li>People get angry when they're frustrated</li>
+							<li>Confusion causes frustration</li>
+							<li>...So what causes this?</li>
+						</ol>
+					</aside>
+				</section>
+				<!-- Visual gags for name - screengrab of Bosh, BOSH wikipedia page, Bosch powerdrill -->
+				<section data-background-iframe="https://www.google.co.uk/search?q=bosh&oq=bosh">
+					<div class="website-overlay">
+						<p>Bosh is not a power drill manufacturer</p>
+						<p>Bosh is not a basketball player</p>
+					</div>
+					<aside class="notes">
+						<ol>
+							<li>Search for Bosh, and you'll get something completely irrelevant...</li>
+						</ol>
+					</aside>
+				</section>
+				<section data-background-iframe="https://en.wikipedia.org/wiki/BOSH">
+					<div class="website-overlay">
+						<p>Bosh is not BOSH</p>
+					</div>
+					<aside class="notes">
+						<ol>
+							<li>...Even if you do find a technology</li>
+							<li>Not Bidirectiontional-streams Over Synchronous HTTP</li>
+						</ol>
+					</aside>
+				</section>
+				<section tagcloud bw large>
+					<span tagcloud-weight="60">Bosh</span>
+					<span class="fragment" tagcloud-weight="30">MicroBosh</span>
+					<span class="fragment" tagcloud-weight="20">Bosh&nbsp;Micro?</span>
+					<span class="fragment" tagcloud-weight="40">bosh&#8209;init</span>
+					<span class="fragment" tagcloud-weight="32">Full&nbsp;Bosh?</span>
+					<span class="fragment" tagcloud-weight="35">Binary&nbsp;Bosh</span>
+					<br />
+					<span class="fragment" tagcloud-weight="55">bosh&#8209;lite</span>
+					<span class="fragment" tagcloud-weight="28">light&nbsp;bosh</span>
+					<span class="fragment" tagcloud-weight="20">Nise&nbsp;Bosh</span>
+					<span class="fragment" tagcloud-weight="15">bosh&#8209;solo</span>
+					<br />
+					<span class="fragment" tagcloud-weight="22">bosh&#8209;gen</span>
+					<span class="fragment" tagcloud-weight="25">bosh&#8209;bootstrap</span>
+					<span class="fragment" tagcloud-weight="10">traveling&#8209;bosh</span>
+					<aside class="notes">
+						<ol>
+							<li>Is MicroBosh Bosh Micro? Does it even matter with bosh-init?</li>
+							<li>Difference between full bosh and a binary bosh</li>
+							<li>Bosh lite is great, but it not a light bosh stemcell</li>
+							<li>Supercedes Nise Bosh, Bosh Solo</li>
+							<li>Then all these other tools you may find</li>
+						</ol>
+					</aside>
+					</section>
+					<section>
+					<h2>JOBS</h2>
+					<p>Jobs are made up of templates</p>
+					<p>One job's templates are in <code>/var/vcap/jobs</code></p>
+					<h2>SPECS</h2>
+					<p>packaging spec != job spec != rspec</p>
+					<aside class="notes">
+						<ol>
+							<li>Jobs in releases are templates in a manifest, which are jobs on the VM, which are instance of a job. Not to be confused with a Monit job, or a Bosh task or Bosh errand.</li>
+							<li>Overloaded specs, not RSpec</li>
+						</ol>
+					</aside>
+					</section>
+				<section>
+					<h2>That's annoying&hellip;</h2>
+					<pre><code class="hljs" data-trim>
+$ bosh target
+
+[WARNING] Loading the cli took 12.4 seconds, consider cleaning your 
+gem environment
+					</code></pre>
+					<aside class="notes">
+						<ol>
+							<li>Expensive laptop - 12 seconds!</li>
+							<li>Cheat code in GitHub</li>
+						</ol>
+					</aside>
+					</section>
+				<section>
+					<h2>Wait&hellip; What?</h2>
+					<pre><code class="hljs" data-trim>
+$ bosh ssh
+&hellip;
+Starting interactive shell on job ha_proxy_z1/0
+No RSA host key is known for 10.244.0.34 and you have requested strict
+checking.
+Host key verification failed.
+					</code></pre>
+					<aside class="notes">
+						<ol>
+							<li>Whilst researching this talk</li>
+							<li>Cheat code in documentation</li>
+						</ol>
+					</aside>
+					</section>
+				<section>
+					<h2>Do not trust Bosh</h2>
+					<pre class="stretch"><code class="hljs" data-trim>
+Started prepare for update
+Started prepare for update > Delete stemcell. Done (00:00:26)
+
+Started deploy micro bosh
+Started deploy micro bosh > Unpacking stemcell. Done (00:00:00)
+Started deploy micro bosh > Uploading stemcell. Done (00:00:00)
+Started deploy micro bosh > Creating VM from ami-e1577396 light. Done (00:00:33)
+Started deploy micro bosh > Waiting for the agent
+					</code></pre>
+					<p class="fragment">Some time later...</p>
+				</section>
+				<section>
+					<h2>Do not trust Bosh</h2>
+					<pre class="stretch"><code class="hljs" data-trim>
+Started prepare for update
+Started prepare for update > Delete stemcell. Done (00:00:26)
+
+Started deploy micro bosh
+Started deploy micro bosh > Unpacking stemcell. Done (00:00:00)
+Started deploy micro bosh > Uploading stemcell. Done (00:00:00)
+Started deploy micro bosh > Creating VM from ami-e1577396 light. Done (00:00:33)
+Started deploy micro bosh > Waiting for the agent
+					</code></pre>
+					<p class="fragment">Later still...</p>
+				</section>
+				<section>
+					<h2>Do not trust Bosh</h2>
+					<pre class="stretch" style="font-size: 0.4em"><code class="hljs" data-trim>
+Started prepare for update
+Started prepare for update > Delete stemcell. Done (00:00:26)
+
+Started deploy micro bosh
+Started deploy micro bosh > Unpacking stemcell. Done (00:00:00)
+Started deploy micro bosh > Uploading stemcell. Done (00:00:00)
+Started deploy micro bosh > Creating VM from ami-e1577396 light. Done (00:00:33)
+Started deploy micro bosh > Waiting for the agent
+log writing failed. can't be called from trap context
+/Users/deejay/.gem/ruby/2.1.3/gems/net-ssh-2.10.0.beta1/lib/net/ssh/buffered_io.rb:65:in `recv': Connection reset by peer - recvfrom(2) (Errno::ECONNRESET)
+from /Users/deejay/.gem/ruby/2.1.3/gems/net-ssh-2.10.0.beta1/lib/net/ssh/buffered_io.rb:65:in `fill'
+from /Users/deejay/.gem/ruby/2.1.3/gems/net-ssh-2.10.0.beta1/lib/net/ssh/transport/packet_stream.rb:104:in `block in next_packet'
+from /Users/deejay/.gem/ruby/2.1.3/gems/net-ssh-2.10.0.beta1/lib/net/ssh/transport/packet_stream.rb:95:in `loop'
+from /Users/deejay/.gem/ruby/2.1.3/gems/net-ssh-2.10.0.beta1/lib/net/ssh/transport/packet_stream.rb:95:in `next_packet'
+from /Users/deejay/.gem/ruby/2.1.3/gems/net-ssh-2.10.0.beta1/lib/net/ssh/transport/session.rb:184:in `block in poll_message'
+from /Users/deejay/.gem/ruby/2.1.3/gems/net-ssh-2.10.0.beta1/lib/net/ssh/transport/session.rb:179:in `loop'
+from /Users/deejay/.gem/ruby/2.1.3/gems/net-ssh-2.10.0.beta1/lib/net/ssh/transport/session.rb:179:in `poll_message'
+from /Users/deejay/.gem/ruby/2.1.3/gems/net-ssh-2.10.0.beta1/lib/net/ssh/transport/session.rb:164:in `next_message'
+from /Users/deejay/.gem/ruby/2.1.3/gems/net-ssh-2.10.0.beta1/lib/net/ssh/authentication/session.rb:95:in `block in next_message'
+from /Users/deejay/.gem/ruby/2.1.3/gems/net-ssh-2.10.0.beta1/lib/net/ssh/authentication/session.rb:94:in `loop'
+from /Users/deejay/.gem/ruby/2.1.3/gems/net-ssh-2.10.0.beta1/lib/net/ssh/authentication/session.rb:94:in `next_message'
+from /Users/deejay/.gem/ruby/2.1.3/gems/net-ssh-2.10.0.beta1/lib/net/ssh/authentication/methods/publickey.rb:53:in `authenticate_with'
+from /Users/deejay/.gem/ruby/2.1.3/gems/net-ssh-2.10.0.beta1/lib/net/ssh/authentication/methods/publickey.rb:20:in `block in authenticate'
+from /Users/deejay/.gem/ruby/2.1.3/gems/net-ssh-2.10.0.beta1/lib/net/ssh/authentication/key_manager.rb:122:in `block in each_identity'
+from /Users/deejay/.gem/ruby/2.1.3/gems/net-ssh-2.10.0.beta1/lib/net/ssh/authentication/key_manager.rb:119:in `each'
+from /Users/deejay/.gem/ruby/2.1.3/gems/net-ssh-2.10.0.beta1/lib/net/ssh/authentication/key_manager.rb:119:in `each_identity'
+from /Users/deejay/.gem/ruby/2.1.3/gems/net-ssh-2.10.0.beta1/lib/net/ssh/authentication/methods/publickey.rb:19:in `authenticate'
+from /Users/deejay/.gem/ruby/2.1.3/gems/net-ssh-2.10.0.beta1/lib/net/ssh/authentication/session.rb:79:in `block in authenticate'
+from /Users/deejay/.gem/ruby/2.1.3/gems/net-ssh-2.10.0.beta1/lib/net/ssh/authentication/session.rb:66:in `each'
+from /Users/deejay/.gem/ruby/2.1.3/gems/net-ssh-2.10.0.beta1/lib/net/ssh/authentication/session.rb:66:in `authenticate'
+from /Users/deejay/.gem/ruby/2.1.3/gems/net-ssh-2.10.0.beta1/lib/net/ssh.rb:226:in `start'
+					</code></pre>
+					<aside class="notes">
+						<ol>
+							<li>Laptop went to sleep</li>
+							<li>Log error masked connection reset</li>
+							<li>Neither of which were the problem</li>
+						</ol>
+					</aside>
+					</section>
+				<section>
+					<h2>Of course I'm sure</h2>
+					<pre><code class="hljs" data-trim>
+$ bosh deploy
+&hellip;
+Deploying
+---------
+Are you sure you want to deploy? (type 'yes' to continue): y
+Deployment canceled
+Deployment canceled
+					</code></pre>
+					<p>via @xoebus</p>
+					<aside class="notes">
+						<ol>
+							<li>From Chris Brown</li>
+							<li>When Bosh tells you to say yes, you say yes</li>
+						</ol>
+					</aside>
+				</section>
+				<section>
+					<h2>Learning Points</h2>
+					<ol>
+						<li>Be prepared to work to build a mental model of Bosh</li>
+						<li>Expect bugs</li>
+						<li>You'll need to look in many areas</li>
+					</ol>
+				</section>
+
+				<section data-background="images/bargaining.gif">
+					<h2>Stage 3: Bargaining</h2>
+					<blockquote>&ldquo;the survivor seeks compromise&rdquo;</blockquote>
+					<aside class="notes">
+						<ol>
+							<li>Subverting Bosh mitigates its benefits - eg using Chef, replacing Monit</li>
+						</ol>
+					</aside>
+				</section>
+        <section>
+          <h2>Bosh has its opinions</h2>
+					<aside class="notes">
+						<ol>
+							<li>Immutable</li>
+							<li>Convergent</li>
+							<li>Declarative</li>
+						</ol>
+					</aside>
+        </section>
+				<section>
+					<h2>Learning Points</h2>
+					<ol>
+						<li>Do not argue with Bosh</li>
+					</ol>
+				</section>
+
+				<section data-background="images/guilt.gif">
+					<h2>Stage 4: Guilt</h2>
+					<blockquote>&ldquo;the survivor believes to have committed sin&rdquo;</blockquote>
+					<aside class="notes">
+						<ol>
+							<li>Survivor has stuff working, now choosing to deploy stuff</li>
+							<li>Those nagging doubts from Denial remain</li>
+						</ol>
+					</aside>
+				</section>
+        <section>
+          <h2>Leaving a Bosh bomb</h2>
+					<aside class="notes">
+						<ol>
+							<li>Boshed infrastructure is supposed to last</li>
+							<li>Unlike other tools - everyone else must scale the cliff</li>
+							<li>Anecdote about boshing things at current client</li>
+						</ol>
+					</aside>
+        </section>
+				<section>
+					<h2>Learning Points</h2>
+					<ol>
+						<li>Same as any niche technology choice</li>
+						<li>Radiate reasons for using it</li>
+						<li>Pair on release development</li>
+					</ol>
+					<aside class="notes">
+						<ol>
+							<li>This <em>is</em> a nice technology</li>
+							<li>Make sure benefits are well understood, esp. for newcomers</li>
+							<li>Pairing is great learning tool</li>
+						</ol>
+					</aside>
+				</section>
+
+				<section data-background="images/depression.gif">
+					<h2>Stage 5: Depression</h2>
+					<blockquote>&ldquo;the survivor has feelings of severe despondency and hopelessness&rdquo;</blockquote>
+				</section>
+        <section>
+          <h2>Waiting</h2>
+        </section>
+        <section>
+          <h2>Testing</h2>
+					<aside class="notes">
+						<ol>
+							<li>Use Bosh-Lite for testing</h2>
+							<li>Use Bosh pools in ci</h2>
+						</ol>
+					</aside>
+        </section>
+        <section>
+          <h2>Composition</h2>
+					<aside class="notes">
+						<ol>
+							<li>I want to use Bosh for orchestration only</h2>
+						</ol>
+					</aside>
+        </section>
+        <section>
+          <h2>Extensibility</h2>
+					<aside class="notes">
+						<ol>
+							<li>I want to use Chef etc</li>
+						</ol>
+					</aside>
+        </section>
+        <section>
+          <h2>Job Modularity</h2>
+					<aside class="notes">
+						<ol>
+							<li>How many nginx jobs?</li>
+						</ol>
+					</aside>
+        </section>
+				<section>
+					<h2>Learning Points</h2>
+					<ol>
+						<li>Tooling is not great, do not expect it</li>
+						<li>All or nothing</li>
+						<li>Use bosh-lite</li>
+						<li>Consider a pool of Boshes for CI</li>
+					</ol>
+					<aside class="notes">
+						<ol>
+							<li>Testing is hard - black box acceptance tests only</li>
+							<li>Each director only does one thing at a time, CI bottlenecks</li>
+						</ol>
+					</aside>
+				</section>
+
+				<section data-background="images/acceptance.gif">
+					<h2>Stage 6: Acceptance</h2>
+					<blockquote>&ldquo;a calm, retrospective view for the survivor, and a stable set of emotions&rdquo;</blockquote>
+					<aside class="notes">
+						<ol>
+							<li>Survivor has scaled the cliff, done it Bosh's way, deployed, lived with a release</li>
+							<li>Stockholm syndrome - Bosh advocacy - Chris, Leeds</li>
+							<li>Declarative - single intent</li>
+							<li>Convergent - I care not for your plan</li>
+							<li>Immutable - no snowflakes</li>
+						</ol>
+					</aside>
+				</section>
+				<section>
+					<img src="images/boshfilms.png" />
+					<aside class="notes">Must be good if it has a parody</aside>
+				</section>
+				<section>
+					<h2>Learning Points</h2>
+					<p>You now have:</p>
+					<ol>
+						<li>IaaC - not just provisioning</li>
+						<li>A team capable of end-to-end continuous delivery</li>
+					</ol>
+					<aside class="notes">
+						<p>Everyone agrees they're a better developer</p>
+					</aside>
+				</section>
+
+				<section data-background="images/hope.gif" data-background-color="#000">
+					<h2>Stage 7: Hope</h2>
+					<blockquote>&ldquo;the survivor develops a positive attitude about the future&rdquo;</blockquote>
+					<aside class="notes">
+						<ol>
+							<li>DJ - off-by-one errors</li>
+							<li>Call to arms to make more Bosh releases?</li>
+						</ol>
+					</aside>
+				</section>
+				<section data-background-iframe="https://bosh.io">
+					<div class="website-overlay">
+						<p>Releases, stemcells, tracker link and documentation all in one place</p>
+					</div>
+					<aside class="notes">
+						<ol>
+							<li>Great improvement in documentation</li>
+						</ol>
+					</aside>
+				</section>
+        <section>
+          <h2>Open</h2>
+        </section>
+        <section data-background-iframe="https://www.pivotaltracker.com/n/projects/956238">
+        	<div class="website-overlay">
+						<p>pivotaltracker.com/n/projects/956238</p>
+					</div>
+        </section>
+        <section>
+          <h2>Vendors will catch up</h2>
+					<aside class="notes">
+						<ol>
+							<li>Products are not cloud ready</li>
+						</ol>
+					</aside>
+        </section>
+
+				<section>
+					<h2>Bosh Self-Help Guide</h2>
+					<ul>
+						<li>It won't be easy, but it will be worth it</li>
+						<li>Be willing to become poly-skilled</li>
+						<li>Exploit bosh-lite for acceptance testing</li>
+						<li>Try to avoid Windows</li>
+					</ul>
+					<aside class="notes">
+							<ul>
+								<li>Buy a Mac. Ubuntu VBox issues, Windows CLI</li>
+							</ul>
+						</aside>
+				</section>
+
+				<section>
+					<h1>Thanks.</h1>
+					<h1>Questions?</h1>
+					<p>cloudcredo.com</p>
+					<p>@ChristHedley</p>
+					<p>engineerbetter.com</p>
+					<p>@EngineerBetter</p>
+					<aside class="notes">Remember to repeat questions into the mic</aside>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: false,
+				history: true,
+				center: true,
+				//Dimensions provided by CF Summit staff
+				width: 1024,
+				height: 768,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'plugin/tagcloud/tagcloud.js', async: true },
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
