@@ -1,0 +1,62 @@
+---
+resources:
+- name: 7-stages-of-bosh
+  type: git
+  source:
+    uri: https://github.com/engineerbetter/7-stages-of-bosh.git
+
+- name: cf-dev
+  type: cf
+  source:
+    <<: &cf-params
+      api: https://api.run.pivotal.io
+      username: systems@engineerbetter.com
+      password: {{systems_cf_password}}
+      organization: engineerbetter
+      skip_cert_check: false
+    space: development
+
+- name: cf-staging
+  type: cf
+  source:
+    <<: *cf-params
+    space: staging
+
+- name: cf-prod
+  type: cf
+  source:
+    <<: *cf-params
+    space: production
+
+jobs:
+- name: deploy-dev
+  serial: true
+  plan:
+  - get: 7-stages-of-bosh
+    trigger: true
+  - put: cf-dev
+    params:
+      path: 7-stages-of-bosh
+      manifest: 7-stages-of-bosh/manifest-dev.yml
+
+- name: deploy-staging
+  serial: true
+  plan:
+  - get: 7-stages-of-bosh
+    passed: [deploy-dev]
+    trigger: true
+  - put: cf-staging
+    params:
+      path: 7-stages-of-bosh
+      manifest: 7-stages-of-bosh/manifest-staging.yml
+
+- name: deploy-prod
+  serial: true
+  plan:
+  - get: 7-stages-of-bosh
+    passed: [deploy-staging]
+    trigger: false
+  - put: cf-prod
+    params:
+      path: 7-stages-of-bosh
+      manifest: 7-stages-of-bosh/manifest-prod.yml
