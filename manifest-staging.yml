@@ -5,9 +5,10 @@ applications:
     memory: 64M
     instances: 1
     buildpack: staticfile_buildpack
-    routes:
-      - route: eb-hugo-staging.engineerbetter.com/7-stages-of-bosh
-      - route: eb-hugo-staging.engineerbetter.com/seven-stages-of-bosh
-      - route: seven-stages-of-bosh-staging.engineerbetter.com
+    # Routing done by Istio VS
+    # routes:
+    #   - route: eb-hugo-staging.engineerbetter.com/7-stages-of-bosh
+    #   - route: 7-stages-of-bosh-staging.engineerbetter.com
+    no-route: true
     env:
       REDIRECT_HOST: seven-stages-of-bosh-staging.engineerbetter.com
