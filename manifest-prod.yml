@@ -1,6 +1,6 @@
 ---
 applications:
-  - name: 7-stages-of-bosh
+  - name: seven-stages-of-bosh
     disk_quota: 60M
     memory: 64M
     instances: 1
