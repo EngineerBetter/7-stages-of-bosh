@@ -1,6 +1,6 @@
 ---
 resources:
-- name: 7-stages-of-bosh
+- name: seven-stages-of-bosh
   type: git
   source:
     uri: https://github.com/engineerbetter/7-stages-of-bosh.git
@@ -17,15 +17,15 @@ jobs:
 - name: set-pipeline
   serial: true
   plan:
-  - get: 7-stages-of-bosh
+  - get: seven-stages-of-bosh
     trigger: true
   - set_pipeline: self
-    file: 7-stages-of-bosh/ci/pipeline.yml
+    file: seven-stages-of-bosh/ci/pipeline.yml
 
 - name: deploy-dev
   serial: true
   plan:
-  - get: 7-stages-of-bosh
+  - get: seven-stages-of-bosh
     trigger: true
     passed: [set-pipeline]
   - get: kf-pipelines
@@ -34,8 +34,8 @@ jobs:
     vars:
       kf_version: ((ebkf-prod-version))
     input_mapping:
-      manifest: 7-stages-of-bosh
-      source: 7-stages-of-bosh
+      manifest: seven-stages-of-bosh
+      source: seven-stages-of-bosh
     params:
       MANIFEST: manifest-dev.yml
       GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
@@ -46,7 +46,7 @@ jobs:
 - name: deploy-staging
   serial: true
   plan:
-  - get: 7-stages-of-bosh
+  - get: seven-stages-of-bosh
     passed: [deploy-dev]
     trigger: true
   - get: kf-pipelines
@@ -55,8 +55,8 @@ jobs:
     vars:
       kf_version: ((ebkf-prod-version))
     input_mapping:
-      manifest: 7-stages-of-bosh
-      source: 7-stages-of-bosh
+      manifest: seven-stages-of-bosh
+      source: seven-stages-of-bosh
     params:
       MANIFEST: manifest-staging.yml
       GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
@@ -67,7 +67,7 @@ jobs:
 - name: deploy-prod
   serial: true
   plan:
-  - get: 7-stages-of-bosh
+  - get: seven-stages-of-bosh
     passed: [deploy-staging]
     trigger: false
   - get: kf-pipelines
@@ -76,8 +76,8 @@ jobs:
     vars:
       kf_version: ((ebkf-prod-version))
     input_mapping:
-      manifest: 7-stages-of-bosh
-      source: 7-stages-of-bosh
+      manifest: seven-stages-of-bosh
+      source: seven-stages-of-bosh
     params:
       MANIFEST: manifest-prod.yml
       GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
