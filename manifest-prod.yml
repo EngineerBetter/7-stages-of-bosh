@@ -11,4 +11,4 @@ applications:
     #   - route: 7-stages-of-bosh.engineerbetter.com
     no-route: true
     env:
-      REDIRECT_HOST: seven-stages-of-bosh.engineerbetter.com
+      REDIRECT_HOST: 7-stages-of-bosh.engineerbetter.com
