@@ -6,8 +6,9 @@ applications:
     instances: 1
     buildpack: staticfile_buildpack
     routes:
-      - route: www.engineerbetter.com/7-stages-of-bosh
+      - route: www.engineerbetter.com/seven-stages-of-bosh
       - route: engineerbetter.com/7-stages-of-bosh
-      - route: 7-stages-of-bosh.engineerbetter.com
+      - route: engineerbetter.com/seven-stages-of-bosh
+      - route: seven-stages-of-bosh.engineerbetter.com
     env:
-      REDIRECT_HOST: 7-stages-of-bosh.engineerbetter.com
+      REDIRECT_HOST: seven-stages-of-bosh.engineerbetter.com
