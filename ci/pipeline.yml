@@ -5,39 +5,43 @@ resources:
   source:
     uri: https://github.com/engineerbetter/7-stages-of-bosh.git
 
-- name: cf-dev
-  type: cf
+- name: kf-pipelines
+  type: git
   source:
-    <<: &cf-params
-      api: https://api.run.pivotal.io
-      username: systems@engineerbetter.com
-      password: ((systems_cf_password))
-      organization: engineerbetter
-      skip_cert_check: false
-    space: development
+    uri: git@github.com:EngineerBetter/kf-pipelines.git
+    private_key: ((git_private_key))
+    branch: prod
 
-- name: cf-staging
-  type: cf
-  source:
-    <<: *cf-params
-    space: staging
-
-- name: cf-prod
-  type: cf
-  source:
-    <<: *cf-params
-    space: production
 
 jobs:
+- name: set-pipeline
+  serial: true
+  plan:
+  - get: 7-stages-of-bosh
+    trigger: true
+  - set_pipeline: self
+    file: 7-stages-of-bosh/ci/pipeline.yml
+
 - name: deploy-dev
   serial: true
   plan:
   - get: 7-stages-of-bosh
     trigger: true
-  - put: cf-dev
+    passed: [set-pipeline]
+  - get: kf-pipelines
+  - task: kf-push
+    file: kf-pipelines/ci/tasks/kf-cli/task.yml
+    vars:
+      kf_version: ((ebkf-prod-version))
+    input_mapping:
+      manifest: 7-stages-of-bosh
+      source: 7-stages-of-bosh
     params:
-      path: 7-stages-of-bosh
-      manifest: 7-stages-of-bosh/manifest-dev.yml
+      MANIFEST: manifest-dev.yml
+      GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
+      REGION: ((ebkf-prod-app-developer-creds.region))
+      CLUSTER: ((ebkf-prod-app-developer-creds.cluster_name))
+      SPACE: development
 
 - name: deploy-staging
   serial: true
@@ -45,10 +49,20 @@ jobs:
   - get: 7-stages-of-bosh
     passed: [deploy-dev]
     trigger: true
-  - put: cf-staging
+  - get: kf-pipelines
+  - task: kf-push
+    file: kf-pipelines/ci/tasks/kf-cli/task.yml
+    vars:
+      kf_version: ((ebkf-prod-version))
+    input_mapping:
+      manifest: 7-stages-of-bosh
+      source: 7-stages-of-bosh
     params:
-      path: 7-stages-of-bosh
-      manifest: 7-stages-of-bosh/manifest-staging.yml
+      MANIFEST: manifest-staging.yml
+      GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
+      REGION: ((ebkf-prod-app-developer-creds.region))
+      CLUSTER: ((ebkf-prod-app-developer-creds.cluster_name))
+      SPACE: development
 
 - name: deploy-prod
   serial: true
@@ -56,7 +70,17 @@ jobs:
   - get: 7-stages-of-bosh
     passed: [deploy-staging]
     trigger: false
-  - put: cf-prod
+  - get: kf-pipelines
+  - task: kf-push
+    file: kf-pipelines/ci/tasks/kf-cli/task.yml
+    vars:
+      kf_version: ((ebkf-prod-version))
+    input_mapping:
+      manifest: 7-stages-of-bosh
+      source: 7-stages-of-bosh
     params:
-      path: 7-stages-of-bosh
-      manifest: 7-stages-of-bosh/manifest-prod.yml
+      MANIFEST: manifest-prod.yml
+      GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
+      REGION: ((ebkf-prod-app-developer-creds.region))
+      CLUSTER: ((ebkf-prod-app-developer-creds.cluster_name))
+      SPACE: development

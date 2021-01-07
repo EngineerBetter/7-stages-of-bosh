@@ -1,13 +1,12 @@
 ---
 applications:
-- name: 7-stages-of-bosh
-  disk: 60M
-  memory: 64M
-  instances: 1
-  buildpack: staticfile_buildpack
-  routes:
-  - route: eb-hugo-staging.cfapps.io/7-stages-of-bosh
-  - route: eb-hugo-staging.engineerbetter.com/7-stages-of-bosh
-  - route: 7-stages-of-bosh-staging.engineerbetter.com
-  env:
-    REDIRECT_HOST: 7-stages-of-bosh-staging.engineerbetter.com
+  - name: 7-stages-of-bosh
+    disk_quota: 60M
+    memory: 64M
+    instances: 1
+    buildpack: staticfile_buildpack
+    routes:
+      - route: eb-hugo-staging.engineerbetter.com/7-stages-of-bosh
+      - route: 7-stages-of-bosh-staging.engineerbetter.com
+    env:
+      REDIRECT_HOST: 7-stages-of-bosh-staging.engineerbetter.com
