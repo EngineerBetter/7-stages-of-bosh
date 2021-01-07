@@ -62,7 +62,7 @@ jobs:
       GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
       REGION: ((ebkf-prod-app-developer-creds.region))
       CLUSTER: ((ebkf-prod-app-developer-creds.cluster_name))
-      SPACE: development
+      SPACE: staging
 
 - name: deploy-prod
   serial: true
@@ -83,4 +83,4 @@ jobs:
       GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
       REGION: ((ebkf-prod-app-developer-creds.region))
       CLUSTER: ((ebkf-prod-app-developer-creds.cluster_name))
-      SPACE: development
+      SPACE: production
