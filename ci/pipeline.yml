@@ -43,7 +43,7 @@ jobs:
     input_mapping:
       input: seven-stages-of-bosh
     params:
-      ARGS: push --space development --manifest input/manifest.yml --path input
+      ARGS: push --space development --manifest input/manifest-dev.yml --path input
 
 - name: deploy-staging
   serial: true
@@ -60,7 +60,7 @@ jobs:
     input_mapping:
       input: seven-stages-of-bosh
     params:
-      ARGS: push --space staging --manifest input/manifest.yml --path input
+      ARGS: push --space staging --manifest input/manifest-staging.yml --path input
 
 - name: deploy-prod
   serial: true
@@ -77,4 +77,4 @@ jobs:
     input_mapping:
       input: seven-stages-of-bosh
     params:
-      ARGS: push --space production --manifest input/manifest.yml --path input
+      ARGS: push --space production --manifest input/manifest-prod.yml --path input
