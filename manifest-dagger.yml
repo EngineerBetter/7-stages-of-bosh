@@ -1,0 +1,12 @@
+---
+applications:
+  - name: seven-stages-of-bosh
+    disk_quota: 60M
+    memory: 64M
+    instances: 1
+    stack: cflinuxfs3
+    buildpack: staticfile_buildpack
+    routes:
+    - route: seven-stages-of-bosh.ebkf-staging.engineerbetter.com
+    env:
+      REDIRECT_HOST: seven-stages-of-bosh.ebkf-staging.engineerbetter.com

@@ -1,0 +1,37 @@
+plan:
+    package: ./plans/dev
+name: dev
+inputs:
+    google_credentials:
+        secret: ENC[AES256_GCM,data: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,iv:RoHDy1YmpxWsLWfqLuV8FSUxeyIgsYuDzxJASF3rxIM=,tag:sBgzvllOjULdkXcLOP5gfA==,type:str]
+    login.env.CLUSTER:
+        text: ebkf
+    manifest:
+        text: manifest-dagger.yml
+    source:
+        dir:
+            path: .
+    space:
+        text: development
+    url:
+        text: https://seven-stages-of-bosh.ebkf-staging.engineerbetter.com
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1pxsl6c88kar3zhsd0qs95pkesfqrlp27jfm7npd3fnry9y0fsgpqvmtly0
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBFalNsY25rVTU4ZzlJSCt0
+            R0hySk80VTBkM3RhVmNFeWZ3bDg1ZXU2T2s0CldBdDBjSlF3OXpCeFhBRGtlVk9k
+            ajBLcnBxd1JJMWU1citpWXYwTVBha1EKLS0tIGRzWm5qQTBSOFhWcGJZeXdtbkw1
+            c3ZGZzZwL3dPUkdMZ3pZZEN4amZ0RVEKKHhftqZkmV6YKUldnVoyyb/55HkH9zIV
+            9G0vekiYY1TuT9PeWR8MYKZEhMZT8gXEdfsHZwDqodAlaU0wd/SUsA==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2022-01-21T18:08:33Z"
+    mac: ENC[AES256_GCM,data:wxgyndBBKIg8YlBN0+tJ+ffdhb1lZQA47C0ThWIMjvTYMe1Vw37Mf4/HvvgoPKkHNYcFMfWS1TvgaWVtkCIyZdcCMw9vcQUa1ewVio+QGgVqM6UUTB4YBWmq90/oClmhplpDFFVtuW1f/FoGEW6puVkBKMjmnsZ0UPNT9OVyErw=,iv:40STityvD1SKELJtFfBSuFAs+oddptSPLSXPbsezm4w=,tag:9oM5WU86zyAtsCWy9FXLuw==,type:str]
+    pgp: []
+    encrypted_suffix: secret
+    version: 3.7.1
